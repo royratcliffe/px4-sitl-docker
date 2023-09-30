@@ -6,6 +6,6 @@ RUN apt update && apt upgrade -y
 
 RUN git clone -b jmavsim-run-p-instance --recurse-submodules https://github.com/royratcliffe/PX4-Autopilot.git
 WORKDIR PX4-Autopilot
-RUN make
+RUN make px4_sitl build_jmavsim_iris
 
 CMD [ "make", "px4_sitl", "jmavsim" ]
