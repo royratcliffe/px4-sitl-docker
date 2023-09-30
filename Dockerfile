@@ -8,4 +8,5 @@ RUN git clone -b jmavsim-run-p-instance --recurse-submodules https://github.com/
 WORKDIR PX4-Autopilot
 RUN make px4_sitl build_jmavsim_iris
 
-CMD [ "make", "px4_sitl", "jmavsim" ]
+WORKDIR build/px4_sitl_default/src/modules/simulation/simulator_mavlink
+ENTRYPOINT [ "cmake", "-E", "env", "PX4_SYS_AUTOSTART=10017", "/PX4-Autopilot/build/px4_sitl_default/bin/px4" ]
