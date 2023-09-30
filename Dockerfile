@@ -4,7 +4,7 @@ FROM px4io/px4-dev-nuttx-jammy
 # graphics, however. Upgrading fixes it.
 RUN apt update && apt upgrade -y
 
-RUN git clone --recurse-submodules https://github.com/PX4/PX4-Autopilot.git
+RUN git clone -b jmavsim-run-p-instance --recurse-submodules https://github.com/royratcliffe/PX4-Autopilot.git
 WORKDIR PX4-Autopilot
 RUN make
 
