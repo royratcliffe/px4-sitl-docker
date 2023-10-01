@@ -4,8 +4,9 @@ FROM px4io/px4-dev-nuttx-jammy
 # graphics, however. Upgrading fixes it.
 RUN apt update && apt upgrade -y
 
-RUN git clone --recurse-submodules https://github.com/PX4/PX4-Autopilot.git
+RUN git clone -b jmavsim-run-p-instance --recurse-submodules https://github.com/royratcliffe/PX4-Autopilot.git
 WORKDIR PX4-Autopilot
-RUN make
+RUN make px4_sitl build_jmavsim_iris
 
-CMD [ "make", "px4_sitl", "jmavsim" ]
+WORKDIR build/px4_sitl_default/src/modules/simulation/simulator_mavlink
+ENTRYPOINT [ "cmake", "-E", "env", "PX4_SYS_AUTOSTART=10017", "../../../../bin/px4" ]
