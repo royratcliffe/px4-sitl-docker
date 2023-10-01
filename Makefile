@@ -7,6 +7,9 @@ build:
 build-no-cache:
 	docker build . --no-cache -t $(TAG)
 
+push:
+	docker push $(TAG)
+
 bash:
 	docker run -it --rm $(ARG) --entrypoint bash $(TAG)
 
