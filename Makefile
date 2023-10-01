@@ -1,4 +1,4 @@
-TAG = royratcliffe/px4sitl
+TAG = royratcliffe/px4-sitl
 
 build:
 	docker build . -t $(TAG)
